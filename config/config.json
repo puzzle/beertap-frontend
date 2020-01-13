@@ -1,0 +1,17 @@
+{
+  "backend": {
+    "host": "localhost",
+    "port": "8080"
+  },
+  "beers": [
+    {
+    "name": "Thomas asd asd asd",
+    "price": 1,
+    "image": "/images/thomas.jpg"
+  },
+  {
+    "name": "Gäbu",
+    "price": 1
+  }
+]
+}

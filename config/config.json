@@ -1,17 +1,24 @@
 {
+  "instance": {
+    "name": "FlashFlush"
+  },
   "backend": {
     "host": "localhost",
     "port": "8080"
   },
+  "event": {
+    "name": "LnConf"
+  },
   "beers": [
     {
-    "name": "Thomas asd asd asd",
-    "price": 1,
-    "image": "/images/thomas.jpg"
-  },
-  {
-    "name": "Gäbu",
-    "price": 1
-  }
-]
+      "tap": "LEFT",  
+      "name": "Thomas asd asd asd",
+      "price": 1
+    },
+    {
+      "tap": "RIGHT",
+      "name": "Gäbu",
+      "price": 1
+    }
+  ]
 }

@@ -9,14 +9,15 @@ export default class BeerCheckout extends BaseElement {
         this.configureListeners();
         this.price = this.getAttribute("beer-price") || "1";
         this.name = this.getAttribute("beer-name") || "beer";
+        this.tap = this.getAttribute("beer-tap");
         this.generateInvoice();
     }
 
     configureListeners() {
         addEventListener(InvoiceEvents.PAID_INVOICE, e => {
             let incoming = e.detail;
-            if (this.invoice && this.invoice.rHash === incoming.rHash) {
-                this.invoice = incoming;
+            if (this.invoice && incoming.id && this.invoice.id === incoming.id) {
+                this.invoice = Object.assign({}, this.invoice, incoming);
                 this.render();
                 if (incoming.settled === true) {
                     setTimeout(() => this.generateInvoice(), 5000)
@@ -50,11 +51,11 @@ export default class BeerCheckout extends BaseElement {
                     <div class="beer-flip-card ${this.invoice.settled?"settled":""}">
                         <div class="beer-flip-card-inner">
                             <div class="beer-flip-card-front">
-                                <qr-code class="beer-qr" format="svg" modulesize="7" margin="0" data="lightning:${this.invoice.paymentRequest.toUpperCase()}"></qr-code>
+                                <beer-qr data="${this.invoice.paymentRequest.toUpperCase()}"></beer-qr>
                             </div>
                             <div class="beer-flip-card-back">
                                 <img src="/images/beer.jpg"></img>
-                                <div>Enjoy your beer lightning pioneer!</div>
+                                <div>Enjoy your beer<br>Lightning pioneer!</div>
                             </div>
                         </div>
                         <div class="beer-flip-card-lightning-0"></div>

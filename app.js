@@ -1,6 +1,7 @@
 import './checkout/BeerCheckout.js'
 import './beerTap/BeerTap.js'
-import './libs/qr-code.js'
+import './qr/BeerQr.js'
+
 import InvoiceClient from './invoices/InvoiceClient.js'
 
 if (!window.send) {

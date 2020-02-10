@@ -10,7 +10,6 @@
 .beer-info {
     display: flex;
     flex-direction: column;
-    width: 360px;
 }
 
 
@@ -48,8 +47,8 @@
 .beer-flip-card {
     position: relative;
     background-color: transparent;
-    width: 360px;
-    height: 360px;
+    width: 300px;
+    height: 300px;
     perspective: 1000px;
 }
 

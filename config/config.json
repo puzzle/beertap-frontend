@@ -11,12 +11,12 @@
   },
   "beers": [
     {
-      "tap": "LEFT",  
+      "tap": "LEFT_TAP",
       "name": "Thomas asd asd asd",
       "price": 1
     },
     {
-      "tap": "RIGHT",
+      "tap": "RIGHT_TAP",
       "name": "Gäbu",
       "price": 1
     }

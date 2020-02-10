@@ -10,6 +10,7 @@ export default class BeerCheckout extends BaseElement {
         this.price = this.getAttribute("beer-price") || "1";
         this.name = this.getAttribute("beer-name") || "beer";
         this.tap = this.getAttribute("beer-tap");
+        this.instance = this.getAttribute("instance");
         this.generateInvoice();
     }
 
@@ -34,7 +35,8 @@ export default class BeerCheckout extends BaseElement {
         if (this.invoiceTimer) {
             clearTimeout(this.invoiceTimer);
         }
-        new CheckoutClient().generateInvoice(this.price, this.name)
+        let invoiceMemo = `${this.instance} ${this.tap} ${this.name}`;
+        new CheckoutClient().generateInvoice(this.price, invoiceMemo)
             .then(invoice => {
                 this.invoice = invoice
                 this.render();
@@ -64,6 +66,8 @@ export default class BeerCheckout extends BaseElement {
                 </div>
                 <div class="beer-price">${this.price}</div>
                 <div class="beer-name">${this.name}</div>
+                ${this.invoice.paymentRequest.toUpperCase()}
+                ${this.invoice.id}
             </div>`;
         } else {
             content = html`

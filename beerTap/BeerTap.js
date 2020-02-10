@@ -17,12 +17,13 @@ export default class BeerTap extends BaseElement {
         new BaseClient().retrieveConfiguration()
         .then(config => {
             this.beers = config.beers;
+            this.instance = config.instance.name;
             this.render();
         });
     }
 
     getTemplate() {
-        const beerList = (beer,i) => html`<beer-checkout id=${i} beer-price=${beer.price} beer-name=${beer.name}></beer-checkout>`;
+        const beerList = (beer,i) => html`<beer-checkout id=${i} instance="${this.instance}" beer-tap="${beer.tap}" beer-price=${beer.price} beer-name=${beer.name}></beer-checkout>`;
         return html`
             <div class="beer-tap-container-outer">
                 <div class="beer-tap-container-inner">

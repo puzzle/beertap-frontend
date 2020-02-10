@@ -1,4 +1,3 @@
-
 export default class BeerQr extends HTMLElement {
 
     constructor() {
@@ -7,9 +6,23 @@ export default class BeerQr extends HTMLElement {
     }
 
 
-    
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'data') {
+            this.render(newValue);
+        } else {
+            console.log(`Unknown attribute`);
+        }
+    }
+    static get observedAttributes() {
+        return ['data'];
+    }
+
     connectedCallback() {
         let data = this.getAttribute("data");
+        this.render(data)
+    }
+
+    render(data) {
         if (data) {
             var typeNumber = 0;
             var errorCorrectionLevel = 'L';

@@ -66,8 +66,6 @@ export default class BeerCheckout extends BaseElement {
                 </div>
                 <div class="beer-price">${this.price}</div>
                 <div class="beer-name">${this.name}</div>
-                ${this.invoice.paymentRequest.toUpperCase()}
-                ${this.invoice.id}
             </div>`;
         } else {
             content = html`

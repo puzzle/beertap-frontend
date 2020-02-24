@@ -8,7 +8,6 @@ export default class InvoiceClient {
     async generateInvoice(amount, memo) {
         await this.config.retrieveBaseUrl();
         return fetch(this.config.baseUrl + `?amount=${amount}&memo=${memo}`)
-            .then(result => result.json())
-            .catch(e => console.error(e));
+            .then(result => result.json());
     }
 }

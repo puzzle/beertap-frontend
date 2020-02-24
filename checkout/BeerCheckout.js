@@ -32,15 +32,21 @@ export default class BeerCheckout extends BaseElement {
     }
 
     generateInvoice() {
+        console.log("Generating new invoice");
         if (this.invoiceTimer) {
             clearTimeout(this.invoiceTimer);
         }
         let invoiceMemo = `${this.instance} ${this.tap} ${this.name}`;
         new CheckoutClient().generateInvoice(this.price, invoiceMemo)
             .then(invoice => {
-                this.invoice = invoice
+                this.invoice = invoice;
                 this.render();
                 this.invoiceTimer = setTimeout(() => this.generateInvoice(), 300000) // generete new every 5 min
+            })
+            .catch(e => {
+                console.log("Error while fetching invoice");
+                this.render();
+                this.invoiceTimer = setTimeout(() => this.generateInvoice(), 5000)
             })
     }
 
